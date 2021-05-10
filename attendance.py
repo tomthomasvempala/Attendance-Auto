@@ -4,38 +4,37 @@ import os.path
 import getpass
 import ctypes
 from selenium.webdriver.chrome.options import Options
+from data import csaId,csbId
 # from webdriver_manager.chrome import ChromeDriveManager
 
 MessageBox = ctypes.windll.user32.MessageBoxW
-subId = {
-    'AFM': '9902',
-    'DBMS': '10120',
-    'OS': '10137',
-    'COA': '10118',
-    'GT': '10468',
-    'OSL': '10080',
-    'DEL': '10205',
-    'HUT': '10042',
-    'HNR': '11073',
-    'MNR': '9902',
-}
+subId = csaId
 myemail = ""
 mypasswword = ""
+myclass="CSA"
 if os.path.exists('moodle_creds.txt'):
     f = open("moodle_creds.txt", "r")
     myemail = f.readline()
     mypasswword = f.readline()
+    myclass=f.readline()
 else:
     print("Enter email: ")
     myemail = input()
     print("Enter password: ")
     mypasswword = getpass.getpass()
+    print("Enter your class (CSA/CSB): ")
+    myclass = input().upper()
     f = open('moodle_creds.txt', 'w')
     f.write(myemail+'\n')
-    f.write(mypasswword)
+    f.write(mypasswword+'\n')
+    f.write(myclass)
     print("Your email and password will be remembered. To change it, edit moodle_creds.txt\n")
-
+if myclass=="CSB":
+    subId=csbId
+else:
+    subId=csaId
 options =Options()
+options.add_experimental_option('excludeSwitches', ['enable-logging'])
 options.headless =True
 driver = webdriver.Chrome(options= options)
 sub=""
@@ -49,13 +48,13 @@ driver.get('http://moodle.mec.ac.in/mod/attendance/view.php?id=' +
 username = driver.find_element_by_id('username')
 username.send_keys(myemail.strip('\n'))
 password = driver.find_element_by_id('password')
-password.send_keys(mypasswword)
+password.send_keys(mypasswword.strip('\n'))
 loginbtn = driver.find_element_by_id('loginbtn')
 loginbtn.click()
 item = driver.find_elements_by_xpath(
     "//a[contains(text(),'Submit attendance')]")
 if item == []:
-    MessageBox(None, 'No attendance found', 'Attendance', 0)
+    MessageBox(None, 'No attendance found for '+ sub, 'Attendance', 0)
     print("No Attendance")
 
 else:
