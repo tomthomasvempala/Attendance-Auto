@@ -5,7 +5,6 @@ import getpass
 import ctypes
 from selenium.webdriver.chrome.options import Options
 from data import csaId,csbId
-# from webdriver_manager.chrome import ChromeDriveManager
 
 MessageBox = ctypes.windll.user32.MessageBoxW
 subId = csaId
@@ -34,8 +33,8 @@ if myclass=="CSB":
 else:
     subId=csaId
 options =Options()
-options.add_experimental_option('excludeSwitches', ['enable-logging'])
-# options.headless =True
+options.add_experimental_option('excludeSwitches', ['enable-logging']) #to avoid unwanted messaged being printed
+options.headless =True #to run chromedriver in bg
 driver = webdriver.Chrome(options= options)
 sub=""
 if len(sys.argv)==1:
