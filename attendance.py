@@ -28,14 +28,14 @@ else:
     f.write(myemail+'\n')
     f.write(mypasswword+'\n')
     f.write(myclass)
-    print("Your email and password will be remembered. To change it, edit moodle_creds.txt\n")
+    print("Your email and password will be remembered. To change it, edit /moodle_creds.txt\n")
 if myclass=="CSB":
     subId=csbId
 else:
     subId=csaId
 options =Options()
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
-options.headless =True
+# options.headless =True
 driver = webdriver.Chrome(options= options)
 sub=""
 if len(sys.argv)==1:
@@ -64,4 +64,5 @@ else:
     present.click()
     submit = driver.find_element_by_id('id_submitbutton')
     submit.click()
+    print("Attendance marked")
     MessageBox(None, 'Attendance marked for '+ sub +'succefully', 'Attendance', 0)
