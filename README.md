@@ -1,5 +1,6 @@
 # Attendance-Auto
-Automatically marks attendance on Moodle on command
+Automatically marks attendance on Moodle on command. Run a one line command, and sit back, relax.
+Club it with a batch file and boom, you can schedule it with Task Scheduler on Windows 10.
 
 ## Requirements
 You need python to run this.
