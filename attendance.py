@@ -54,7 +54,7 @@ item = driver.find_elements_by_xpath(
     "//a[contains(text(),'Submit attendance')]")
 if item == []:
     MessageBox(None, 'No attendance found for '+ sub, 'Attendance', 0)
-    print("No Attendance")
+    sys.exit("No Attendance")
 
 else:
     item[0].click()
@@ -64,4 +64,4 @@ else:
     submit = driver.find_element_by_id('id_submitbutton')
     submit.click()
     print("Attendance marked")
-    MessageBox(None, 'Attendance marked for '+ sub +'succefully', 'Attendance', 0)
+    MessageBox(None, 'Attendance marked for '+ sub +' succefully', 'Attendance', 0)
