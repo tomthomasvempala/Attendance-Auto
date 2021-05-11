@@ -35,7 +35,7 @@ else:
     subId=csaId
 options =Options()
 options.add_experimental_option('excludeSwitches', ['enable-logging']) #to avoid unwanted messaged being printed
-#options.headless =True #to run chromedriver in bg
+options.headless =True #to run chromedriver in bg
 driver = webdriver.Chrome(options= options)
 sub=""
 if len(sys.argv)==1:
