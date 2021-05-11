@@ -7,9 +7,9 @@ currTime=dt.datetime.now().time()
 timeTable = [
   ["DBMS", "DBMS", "GT", "HUT", "OSL"],
   ["COA", "OS", "DBMS", "DBMS", "DEL"],
-  ["HNRS", "COA", "GT", "OS", "MNR"],
-  ["COA", "OS", "GT", "HNRS", "MNR"],
-  ["OS", "COA", "GT", "HUT", "HNRS"],
+  ["HNR", "COA", "GT", "OS", "MNR"],
+  ["COA", "OS", "GT", "HNR", "MNR"],
+  ["OS", "COA", "GT", "HUT", "HNR"],
 ]
 
 
