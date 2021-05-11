@@ -2,11 +2,12 @@ from selenium import webdriver
 import sys
 import os.path
 import getpass
-import ctypes
+#import ctypes
 from selenium.webdriver.chrome.options import Options
 from data import csaId,csbId
+from currentPeriodFinder import getCurrPeriod
 
-MessageBox = ctypes.windll.user32.MessageBoxW
+#MessageBox = ctypes.windll.user32.MessageBoxW
 subId = csaId
 myemail = ""
 mypasswword = ""
@@ -34,14 +35,18 @@ else:
     subId=csaId
 options =Options()
 options.add_experimental_option('excludeSwitches', ['enable-logging']) #to avoid unwanted messaged being printed
-options.headless =True #to run chromedriver in bg
+#options.headless =True #to run chromedriver in bg
 driver = webdriver.Chrome(options= options)
 sub=""
 if len(sys.argv)==1:
-    print("Enter subject code: ")
-    sub=input().upper()
+    sub=getCurrPeriod()
+    print(sub)
+
+    # print("Enter subject code: ")
+    # sub=input().upper()
 else:
     sub = sys.argv[1].upper()
+
 driver.get('http://moodle.mec.ac.in/mod/attendance/view.php?id=' +
            subId[sub])
 username = driver.find_element_by_id('username')
@@ -53,8 +58,8 @@ loginbtn.click()
 item = driver.find_elements_by_xpath(
     "//a[contains(text(),'Submit attendance')]")
 if item == []:
-    MessageBox(None, 'No attendance found for '+ sub, 'Attendance', 0)
-    print("No Attendance")
+    #MessageBox(None, 'No attendance found for '+ sub, 'Attendance', 0)
+    print("No Attendance Marked")
 
 else:
     item[0].click()
@@ -63,5 +68,5 @@ else:
     present.click()
     submit = driver.find_element_by_id('id_submitbutton')
     submit.click()
-    print("Attendance marked")
-    MessageBox(None, 'Attendance marked for '+ sub +'succefully', 'Attendance', 0)
+    print('Attendance marked for '+ sub +'successfully')
+    #MessageBox(None, 'Attendance marked for '+ sub +'succefully', 'Attendance', 0)
