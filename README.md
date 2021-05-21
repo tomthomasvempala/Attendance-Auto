@@ -27,6 +27,14 @@ To mark the attendance of a specific subject
 ```
 python attendance.py <SUBJECT CODE>
 ```
-The following are the subject codes:
-DBMS, OS, COA, GT, HUT, HNR, MNR, OSL, DEL
+The following are the subject codes (CS 2023): </br>
+<strong>DBMS, OS, COA, GT, HUT, HNR, MNR, OSL, DEL</strong>
+</br>
 
+
+For someone from different department or batch to use this, just modify the subject codes, moodle attendance page ids and timetable in data.py.
+</br>
+There's also a question in attendance.py asking your class. You might wanna edit that too if you're not CS. 
+
+</br>
+And you find this project helpful, please consider dropping a star ⭐ 😊
