@@ -18,7 +18,7 @@ git clone https://github.com/tomthomasvempala/Attendance-Auto.git
 cd Attendance-Auto
 ```
 
-To mark the attedance of ongoing period 
+To mark the attedance of ongoing period. (It will automatically figure it out for you)
 ```
 python attendance.py
 ```
