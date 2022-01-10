@@ -37,4 +37,4 @@ For someone from different department or batch to use this, just modify the subj
 There's also a question in attendance.py asking your class. You might wanna edit that too if you're not CS. 
 
 </br>
-And you find this project helpful, please consider dropping a star ⭐ 😊
+And if you find this project helpful, please consider dropping a star ⭐ 😊
